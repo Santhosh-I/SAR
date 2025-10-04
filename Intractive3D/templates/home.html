@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Rabbit Hole Adventures{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="rabbit-animation-container">
+        <!-- Animated Rabbit -->
+        <div class="rabbit" id="rabbit">
+            <div class="rabbit-body">
+                <div class="rabbit-head">
+                    <div class="ear left-ear"></div>
+                    <div class="ear right-ear"></div>
+                    <div class="eye left-eye"></div>
+                    <div class="eye right-eye"></div>
+                    <div class="nose"></div>
+                </div>
+                <div class="rabbit-torso"></div>
+                <div class="rabbit-legs">
+                    <div class="leg front-left"></div>
+                    <div class="leg front-right"></div>
+                    <div class="leg back-left"></div>
+                    <div class="leg back-right"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Holes -->
+        <div class="holes-container">
+            <div class="hole hole-1" data-page="about">
+                <div class="hole-inner"></div>
+                <div class="hole-label">About Us</div>
+            </div>
+            <div class="hole hole-2" data-page="services">
+                <div class="hole-inner"></div>
+                <div class="hole-label">Services</div>
+            </div>
+            <div class="hole hole-3" data-page="contact">
+                <div class="hole-inner"></div>
+                <div class="hole-label">Contact</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-content">
+        <h1 class="hero-title">Welcome to Rabbit Hole Adventures!</h1>
+        <p class="hero-subtitle">Follow the bouncing rabbit into amazing digital experiences</p>
+        <button class="cta-button" onclick="startRabbitAnimation()">
+            <i class="fas fa-play"></i> Start Adventure
+        </button>
+    </div>
+</div>
+
+<div class="features-section">
+    <div class="container">
+        <h2>Hop Into Adventure</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-magic"></i>
+                <h3>Magical Experiences</h3>
+                <p>Dive deep into wonderfully crafted digital adventures that capture imagination.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-rocket"></i>
+                <h3>Fast Performance</h3>
+                <p>Lightning-fast loading times and smooth animations for seamless user experience.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-heart"></i>
+                <h3>User Friendly</h3>
+                <p>Intuitive design that makes navigation as easy as following a rabbit trail.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
