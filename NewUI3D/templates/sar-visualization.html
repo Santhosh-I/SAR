@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="viz-hero">
+    <div class="container">
+        <h1 class="page-title">SAR Data Visualization</h1>
+        <p class="page-description">Interactive exploration of Synthetic Aperture Radar data across Japan</p>
+    </div>
+</section>
+
+<section class="visualization-section">
+    <div class="viz-container">
+        <div class="viz-controls">
+            <div class="control-group">
+                <label>Frequency Band:</label>
+                <select id="frequency-filter">
+                    <option value="all">All Bands</option>
+                    <option value="L-band">L-band</option>
+                    <option value="C-band">C-band</option>
+                    <option value="X-band">X-band</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Polarization:</label>
+                <select id="polarization-filter">
+                    <option value="all">All Polarizations</option>
+                    <option value="HH">HH</option>
+                    <option value="HV">HV</option>
+                    <option value="VV">VV</option>
+                    <option value="VH">VH</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <button id="animate-data" class="btn-primary">Animate Data</button>
+            </div>
+        </div>
+        
+        <div class="main-viz">
+            <div id="main-globe-container"></div>
+        </div>
+        
+        <div class="viz-info">
+            <div class="info-panel">
+                <h3>SAR Data Insights</h3>
+                <div id="data-stats"></div>
+                <div id="selected-point-info"></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/globe.js') }}"></script>
+<script src="{{ url_for('static', filename='js/sar-data.js') }}"></script>
+<script>
+    // Initialize advanced SAR visualization
+    document.addEventListener('DOMContentLoaded', function() {
+        initAdvancedSARVisualization();
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1 class="hero-title">Meta-Verse</h1>
+            <p class="hero-subtitle">Advanced SAR Data Visualization</p>
+            <p class="hero-description">
+                Exploring Earth's surface through Synthetic Aperture Radar technology,
+                revealing insights beyond what the eye can see.
+            </p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('sar_visualization') }}" class="btn-primary">Explore SAR Data</a>
+                <a href="{{ url_for('about') }}" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-globe">
+            <div id="globe-container"></div>
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <div class="container">
+        <h2 class="section-title">SAR Technology Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>All-Weather Imaging</h3>
+                <p>SAR penetrates clouds and operates day/night, providing consistent Earth observation data.</p>
+            </div>
+            <div class="feature-card">
+                <h3>High Resolution</h3>
+                <p>Sub-meter resolution imagery for detailed surface analysis and change detection.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Japan Focus</h3>
+                <p>Specialized monitoring of Japan's unique geographical and geological features.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/globe.js') }}"></script>
+<script src="{{ url_for('static', filename='js/sar-data.js') }}"></script>
+{% endblock %}

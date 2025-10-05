@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}Home - Rabbit Hole Adventures{% endblock %}
+{% block title %}SAR Rabbit Hole - Earth Observation Adventures{% endblock %}
 
 {% block content %}
 <div class="hero-section">
-    <div class="hero-content">
-        <h1 class="hero-title">Welcome to Rabbit Hole Adventures!</h1>
-        <p class="hero-subtitle">Follow the bouncing rabbit into amazing digital experiences</p>
+        <div class="hero-content">
+        <h1 class="hero-title">SAR Rabbit Hole Adventures</h1>
+        <p class="hero-subtitle">Like Alice in Wonderland, travel down the rabbit hole to reveal Earth's hidden stories through Synthetic Aperture Radar</p>
         <button class="cta-button" onclick="startRabbitAnimation()">
-            <i class="fas fa-play"></i> Start Adventure
+            <i class="fas fa-satellite"></i> Begin Earth Observation
         </button>
     </div>
     <div class="rabbit-animation-container">
@@ -17,43 +17,44 @@
             <img src="{{ url_for('static', filename='images/rabbit.png') }}" alt="Animated Rabbit" class="rabbit-img">
         </div>
 
-        <!-- Navigation Holes -->
+        <!-- Navigation Holes with SAR Stories -->
         <div class="holes-container">
-            <div class="hole hole-1" data-page="about">
+            <div class="hole hole-1" data-page="japan-story">
                 <div class="hole-inner"></div>
-                <div class="hole-label">About Us</div>
+                <div class="hole-label">Japan 2011 Earthquake</div>
             </div>
             <div class="hole hole-2" data-page="services">
                 <div class="hole-inner"></div>
-                <div class="hole-label">Services</div>
+                <div class="hole-label">SAR Analysis</div>
             </div>
             <div class="hole hole-3" data-page="contact">
                 <div class="hole-inner"></div>
-                <div class="hole-label">Contact</div>
+                <div class="hole-label">Explore Data</div>
             </div>
         </div>
     </div>
+
 
 </div>
 
 <div class="features-section">
     <div class="container">
-        <h2>Hop Into Adventure</h2>
+        <h2>Journey Through Earth's Data</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <i class="fas fa-magic"></i>
-                <h3>Magical Experiences</h3>
-                <p>Dive deep into wonderfully crafted digital adventures that capture imagination.</p>
+                <i class="fas fa-satellite-dish"></i>
+                <h3>SAR Technology</h3>
+                <p>Synthetic Aperture Radar penetrates clouds and darkness, revealing Earth's secrets day and night.</p>
             </div>
             <div class="feature-card">
-                <i class="fas fa-rocket"></i>
-                <h3>Fast Performance</h3>
-                <p>Lightning-fast loading times and smooth animations for seamless user experience.</p>
+                <i class="fas fa-globe-asia"></i>
+                <h3>Real Disasters</h3>
+                <p>Explore actual earthquake, tsunami, and volcanic data from major events across the globe.</p>
             </div>
             <div class="feature-card">
-                <i class="fas fa-heart"></i>
-                <h3>User Friendly</h3>
-                <p>Intuitive design that makes navigation as easy as following a rabbit trail.</p>
+                <i class="fas fa-chart-line"></i>
+                <h3>Data Analysis</h3>
+                <p>Interactive storytelling with motion graphics reveals the science behind each observation.</p>
             </div>
         </div>
     </div>

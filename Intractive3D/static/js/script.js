@@ -284,3 +284,194 @@ document.head.appendChild(cosmicStyle);
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', enhanceCosmicPortals);
+
+
+// Enhanced galaxy portal effects
+function initializeGalaxyPortals() {
+    const holes = document.querySelectorAll('.hole');
+    
+    holes.forEach((hole, index) => {
+        // Create dynamic star particles
+        const starField = document.createElement('div');
+        starField.className = 'galaxy-stars';
+        starField.style.cssText = `
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            right: -100%;
+            bottom: -100%;
+            pointer-events: none;
+            z-index: 1;
+        `;
+        
+        // Generate random stars
+        for (let i = 0; i < 15; i++) {
+            const star = document.createElement('div');
+            star.className = 'galaxy-star';
+            star.style.cssText = `
+                position: absolute;
+                width: ${Math.random() * 2 + 1}px;
+                height: ${Math.random() * 2 + 1}px;
+                background: rgba(255, 255, 255, ${Math.random() * 0.8 + 0.2});
+                border-radius: 50%;
+                top: ${Math.random() * 100}%;
+                left: ${Math.random() * 100}%;
+                animation: galaxyStarTwinkle ${Math.random() * 3 + 2}s infinite ease-in-out;
+                animation-delay: ${Math.random() * 2}s;
+                box-shadow: 0 0 ${Math.random() * 4 + 2}px rgba(255, 255, 255, 0.8);
+            `;
+            starField.appendChild(star);
+        }
+        
+        hole.appendChild(starField);
+        
+        // Enhanced hover effects
+        hole.addEventListener('mouseenter', function() {
+            this.style.filter = `
+                drop-shadow(0 0 30px rgba(147, 51, 234, 0.8))
+                drop-shadow(0 0 50px rgba(59, 130, 246, 0.6))
+                drop-shadow(0 0 70px rgba(236, 72, 153, 0.4))
+            `;
+        });
+        
+        hole.addEventListener('mouseleave', function() {
+            this.style.filter = 'drop-shadow(0 0 10px rgba(147, 51, 234, 0.4))';
+        });
+    });
+}
+
+// Add galaxy star animation CSS
+const galaxyStyle = document.createElement('style');
+galaxyStyle.textContent = `
+    @keyframes galaxyStarTwinkle {
+        0%, 100% { 
+            opacity: 0.2;
+            transform: scale(0.5);
+        }
+        25% { 
+            opacity: 0.8;
+            transform: scale(1.2);
+        }
+        50% { 
+            opacity: 0.4;
+            transform: scale(1);
+        }
+        75% { 
+            opacity: 0.9;
+            transform: scale(1.1);
+        }
+    }
+`;
+document.head.appendChild(galaxyStyle);
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', initializeGalaxyPortals);
+
+// Japan Story Navigation
+let currentChapter = 0;
+const totalChapters = 5;
+
+function nextChapter() {
+    if (currentChapter < totalChapters - 1) {
+        currentChapter++;
+        showChapter(currentChapter);
+        updateNavigation();
+        updateProgress();
+    }
+}
+
+function previousChapter() {
+    if (currentChapter > 0) {
+        currentChapter--;
+        showChapter(currentChapter);
+        updateNavigation();
+        updateProgress();
+    }
+}
+
+function showChapter(chapterIndex) {
+    // Hide all chapters
+    document.querySelectorAll('.story-chapter').forEach(chapter => {
+        chapter.classList.remove('active');
+    });
+    
+    // Show current chapter
+    const currentChapterEl = document.getElementById(`chapter-${chapterIndex}`);
+    if (currentChapterEl) {
+        setTimeout(() => {
+            currentChapterEl.classList.add('active');
+        }, 300);
+    }
+    
+    // Update indicators
+    document.querySelectorAll('.indicator').forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === chapterIndex);
+    });
+}
+
+function updateNavigation() {
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    if (prevBtn) prevBtn.disabled = currentChapter === 0;
+    if (nextBtn) nextBtn.disabled = currentChapter === totalChapters - 1;
+}
+
+function updateProgress() {
+    const progressBar = document.getElementById('progressBar');
+    if (progressBar) {
+        const progress = ((currentChapter + 1) / totalChapters) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+}
+
+// Initialize story navigation
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on the Japan story page
+    if (window.location.pathname.includes('japan-story')) {
+        updateNavigation();
+        updateProgress();
+        
+        // Add click handlers to indicators
+        document.querySelectorAll('.indicator').forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentChapter = index;
+                showChapter(currentChapter);
+                updateNavigation();
+                updateProgress();
+            });
+        });
+        
+        // Auto-advance story (optional)
+        // setInterval(() => {
+        //     if (currentChapter < totalChapters - 1) {
+        //         nextChapter();
+        //     }
+        // }, 30000); // 30 seconds per chapter
+    }
+});
+
+// Update hole navigation to route to Japan story
+document.addEventListener('DOMContentLoaded', function() {
+    const holes = document.querySelectorAll('.hole');
+    
+    holes.forEach(hole => {
+        hole.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
+            if (page) {
+                // Add click animation
+                this.classList.add('hole-clicked');
+                
+                // Navigate after animation
+                setTimeout(() => {
+                    if (page === 'japan-story') {
+                        window.location.href = '/japan-story';
+                    } else {
+                        window.location.href = `/${page}`;
+                    }
+                }, 500);
+            }
+        });
+    });
+});
+

@@ -1,0 +1,242 @@
+/* Globe Visualization Styles */
+.globe-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #1a1a2e, #0a0a0a);
+}
+
+.globe-canvas {
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    transition: var(--transition);
+}
+
+.globe-canvas:active {
+    cursor: grabbing;
+}
+
+/* Globe controls */
+.globe-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+}
+
+.globe-control-btn {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.globe-control-btn:hover {
+    background: var(--accent-red);
+    border-color: var(--accent-red);
+}
+
+/* SAR Data Points */
+.sar-point {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sar-point:hover {
+    transform: scale(1.5);
+}
+
+/* Japan highlight overlay */
+.japan-highlight {
+    position: absolute;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.8;
+    mix-blend-mode: screen;
+}
+
+/* Info tooltip */
+.globe-tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--text-primary);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    pointer-events: none;
+    z-index: 1000;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.globe-tooltip.show {
+    opacity: 1;
+}
+
+/* Visualization page styles */
+.viz-hero {
+    padding: 6rem 0 3rem;
+    background: var(--bg-secondary);
+    text-align: center;
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.page-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.visualization-section {
+    padding: 3rem 0;
+    min-height: 80vh;
+}
+
+.viz-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 250px 1fr 300px;
+    grid-template-areas: "controls viz info";
+    gap: 2rem;
+}
+
+.viz-controls {
+    grid-area: controls;
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    height: fit-content;
+}
+
+.main-viz {
+    grid-area: viz;
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    min-height: 600px;
+}
+
+.viz-info {
+    grid-area: info;
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    height: fit-content;
+}
+
+#main-globe-container {
+    width: 100%;
+    height: 600px;
+}
+
+.control-group {
+    margin-bottom: 1.5rem;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.control-group select {
+    width: 100%;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+/* Data stats */
+.data-stats {
+    margin-top: 1rem;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stat-item:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.stat-value {
+    color: var(--accent-red);
+    font-weight: 600;
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotate-animation {
+    animation: rotate 20s linear infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .viz-container {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "controls"
+            "viz"
+            "info";
+    }
+    
+    .viz-controls {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+    }
+    
+    .control-group {
+        min-width: 200px;
+        margin-bottom: 0;
+    }
+}

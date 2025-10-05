@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+
+{% block title %}Japan 2011 Earthquake - SAR Story{% endblock %}
+
+{% block content %}
+<div class="story-container">
+    <!-- Story Progress Bar -->
+    <div class="story-progress">
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="progress-indicators">
+            <div class="indicator active" data-chapter="0">Pre-Event</div>
+            <div class="indicator" data-chapter="1">Earthquake</div>
+            <div class="indicator" data-chapter="2">Tsunami</div>
+            <div class="indicator" data-chapter="3">SAR Analysis</div>
+            <div class="indicator" data-chapter="4">Recovery</div>
+        </div>
+    </div>
+
+    <!-- Story Chapters -->
+    <div class="story-chapter active" id="chapter-0">
+        <div class="chapter-content">
+            <div class="japan-map-container">
+                <div class="japan-map">
+                    <svg viewBox="0 0 400 300" class="japan-svg">
+                        <!-- Simplified Japan outline -->
+                        <path d="M180 50 Q200 40 220 60 L240 80 Q250 100 240 120 L220 140 Q200 150 180 140 L160 120 Q150 100 160 80 Z" 
+                              class="japan-mainland" fill="rgba(147, 51, 234, 0.3)" stroke="rgba(147, 51, 234, 0.8)" stroke-width="2"/>
+                        
+                        <!-- Tohoku region highlight -->
+                        <circle cx="200" cy="80" r="15" class="tohoku-region" fill="rgba(59, 130, 246, 0.5)" stroke="rgba(59, 130, 246, 1)" stroke-width="2"/>
+                        
+                        <!-- Tectonic plate boundaries -->
+                        <line x1="250" y1="60" x2="350" y2="120" class="plate-boundary" stroke="rgba(236, 72, 153, 0.8)" stroke-width="3" stroke-dasharray="5,5"/>
+                        <line x1="250" y1="120" x2="350" y2="180" class="plate-boundary" stroke="rgba(236, 72, 153, 0.8)" stroke-width="3" stroke-dasharray="5,5"/>
+                        
+                        <!-- SAR satellite orbit -->
+                        <ellipse cx="200" cy="150" rx="120" ry="60" class="satellite-orbit" fill="none" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" stroke-dasharray="10,5"/>
+                        <circle cx="320" cy="150" r="8" class="satellite" fill="rgba(255, 255, 255, 0.9)">
+                            <animateMotion dur="20s" repeatCount="indefinite" path="M0,0 Q-60,-30 -120,0 Q-180,30 -240,0 Q-180,-30 -120,0 Q-60,30 0,0"/>
+                        </circle>
+                    </svg>
+                </div>
+                
+                <div class="chapter-text">
+                    <h2>March 11, 2011 - A Normal Day</h2>
+                    <p class="story-text">
+                        The Tohoku region of Japan appears peaceful in pre-earthquake SAR images. 
+                        The coastline is stable, buildings intact, and the Pacific Plate slowly pushes beneath the North American Plate.
+                    </p>
+                    <div class="sar-info">
+                        <h4>SAR Data Parameters:</h4>
+                        <ul>
+                            <li>Frequency: L-band (1.2 GHz)</li>
+                            <li>Resolution: 10m x 10m</li>
+                            <li>Polarization: HH + HV</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="story-chapter" id="chapter-1">
+        <div class="chapter-content">
+            <div class="earthquake-visualization">
+                <div class="seismic-waves">
+                    <div class="wave wave-1"></div>
+                    <div class="wave wave-2"></div>
+                    <div class="wave wave-3"></div>
+                    <div class="epicenter"></div>
+                </div>
+                
+                <div class="chapter-text">
+                    <h2>14:46 JST - The Earth Shakes</h2>
+                    <p class="story-text">
+                        A magnitude 9.0 earthquake strikes 130km east of Sendai. The most powerful earthquake ever recorded in Japan causes massive ground deformation visible even from space.
+                    </p>
+                    <div class="earthquake-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">9.0</span>
+                            <span class="stat-label">Magnitude</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">6 min</span>
+                            <span class="stat-label">Duration</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24m</span>
+                            <span class="stat-label">Max Displacement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="story-chapter" id="chapter-2">
+        <div class="chapter-content">
+            <div class="tsunami-simulation">
+                <div class="ocean-container">
+                    <div class="tsunami-wave wave-front-1"></div>
+                    <div class="tsunami-wave wave-front-2"></div>
+                    <div class="tsunami-wave wave-front-3"></div>
+                    <div class="coastal-impact"></div>
+                </div>
+                
+                <div class="chapter-text">
+                    <h2>15:30 JST - Tsunami Impact</h2>
+                    <p class="story-text">
+                        The earthquake generates a massive tsunami that reaches heights of 40 meters in some areas. 
+                        SAR satellites track the wave propagation and coastal flooding in real-time.
+                    </p>
+                    <div class="tsunami-timeline">
+                        <div class="timeline-event">
+                            <span class="time">14:46</span> - Earthquake
+                        </div>
+                        <div class="timeline-event">
+                            <span class="time">15:30</span> - First waves hit coast
+                        </div>
+                        <div class="timeline-event">
+                            <span class="time">16:00</span> - Fukushima overwhelmed
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="story-chapter" id="chapter-3">
+        <div class="chapter-content">
+            <div class="sar-analysis-container">
+                <div class="before-after-slider">
+                    <div class="sar-image before">
+                        <div class="image-label">Before - March 8, 2011</div>
+                        <div class="sar-data-viz">
+                            <div class="data-grid">
+                                <div class="data-point normal" style="--delay: 0s;"></div>
+                                <div class="data-point normal" style="--delay: 0.1s;"></div>
+                                <div class="data-point normal" style="--delay: 0.2s;"></div>
+                                <div class="data-point normal" style="--delay: 0.3s;"></div>
+                                <div class="data-point normal" style="--delay: 0.4s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sar-image after">
+                        <div class="image-label">After - March 15, 2011</div>
+                        <div class="sar-data-viz">
+                            <div class="data-grid">
+                                <div class="data-point damaged" style="--delay: 0s;"></div>
+                                <div class="data-point flooded" style="--delay: 0.1s;"></div>
+                                <div class="data-point damaged" style="--delay: 0.2s;"></div>
+                                <div class="data-point debris" style="--delay: 0.3s;"></div>
+                                <div class="data-point flooded" style="--delay: 0.4s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-handle" id="sliderHandle"></div>
+                </div>
+                
+                <div class="chapter-text">
+                    <h2>SAR Reveals the Truth</h2>
+                    <p class="story-text">
+                        SAR interferometry shows ground displacement up to 24 meters eastward. 
+                        Change detection algorithms identify flooded areas, damaged infrastructure, and debris fields.
+                    </p>
+                    <div class="analysis-results">
+                        <div class="result-card">
+                            <h4>Ground Deformation</h4>
+                            <p>InSAR detected crustal movement across 500km</p>
+                        </div>
+                        <div class="result-card">
+                            <h4>Flood Mapping</h4>
+                            <p>561 km² of coastal flooding identified</p>
+                        </div>
+                        <div class="result-card">
+                            <h4>Damage Assessment</h4>
+                            <p>15,899 buildings destroyed or damaged</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="story-chapter" id="chapter-4">
+        <div class="chapter-content">
+            <div class="recovery-timeline">
+                <div class="timeline-container">
+                    <div class="timeline-item" data-year="2011">
+                        <div class="timeline-content">
+                            <h4>2011 - Emergency Response</h4>
+                            <p>SAR satellites provide 24/7 monitoring for rescue operations</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-year="2013">
+                        <div class="timeline-content">
+                            <h4>2013 - Reconstruction</h4>
+                            <p>Multi-temporal SAR tracks rebuilding progress</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-year="2021">
+                        <div class="timeline-content">
+                            <h4>2021 - 10 Years Later</h4>
+                            <p>Complete recovery visible in latest SAR imagery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chapter-text">
+                <h2>Recovery and Resilience</h2>
+                <p class="story-text">
+                    A decade of SAR monitoring reveals Japan's remarkable recovery. 
+                    New coastal defenses, relocated communities, and improved early warning systems are all visible from space.
+                </p>
+                <div class="lesson-learned">
+                    <h4>What SAR Taught Us:</h4>
+                    <ul>
+                        <li>Real-time disaster monitoring saves lives</li>
+                        <li>Multi-polarization data reveals different damage types</li>
+                        <li>Long-term monitoring tracks recovery progress</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Story Navigation -->
+    <div class="story-navigation">
+        <button class="nav-btn prev-btn" onclick="previousChapter()" disabled>
+            <i class="fas fa-chevron-left"></i> Previous
+        </button>
+        <button class="nav-btn next-btn" onclick="nextChapter()">
+            Next <i class="fas fa-chevron-right"></i>
+        </button>
+        <button class="nav-btn home-btn" onclick="window.location.href='{{ url_for('home') }}'">
+            <i class="fas fa-home"></i> Back to Rabbit Hole
+        </button>
+    </div>
+</div>
+{% endblock %}
