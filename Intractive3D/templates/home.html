@@ -4,25 +4,17 @@
 
 {% block content %}
 <div class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">Welcome to Rabbit Hole Adventures!</h1>
+        <p class="hero-subtitle">Follow the bouncing rabbit into amazing digital experiences</p>
+        <button class="cta-button" onclick="startRabbitAnimation()">
+            <i class="fas fa-play"></i> Start Adventure
+        </button>
+    </div>
     <div class="rabbit-animation-container">
         <!-- Animated Rabbit -->
         <div class="rabbit" id="rabbit">
-            <div class="rabbit-body">
-                <div class="rabbit-head">
-                    <div class="ear left-ear"></div>
-                    <div class="ear right-ear"></div>
-                    <div class="eye left-eye"></div>
-                    <div class="eye right-eye"></div>
-                    <div class="nose"></div>
-                </div>
-                <div class="rabbit-torso"></div>
-                <div class="rabbit-legs">
-                    <div class="leg front-left"></div>
-                    <div class="leg front-right"></div>
-                    <div class="leg back-left"></div>
-                    <div class="leg back-right"></div>
-                </div>
-            </div>
+            <img src="{{ url_for('static', filename='images/rabbit.png') }}" alt="Animated Rabbit" class="rabbit-img">
         </div>
 
         <!-- Navigation Holes -->
@@ -42,13 +34,6 @@
         </div>
     </div>
 
-    <div class="hero-content">
-        <h1 class="hero-title">Welcome to Rabbit Hole Adventures!</h1>
-        <p class="hero-subtitle">Follow the bouncing rabbit into amazing digital experiences</p>
-        <button class="cta-button" onclick="startRabbitAnimation()">
-            <i class="fas fa-play"></i> Start Adventure
-        </button>
-    </div>
 </div>
 
 <div class="features-section">

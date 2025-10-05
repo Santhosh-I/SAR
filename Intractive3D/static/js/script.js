@@ -235,3 +235,52 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+
+// Enhanced cosmic portal effects
+function enhanceCosmicPortals() {
+    const holes = document.querySelectorAll('.hole-inner');
+    
+    holes.forEach((hole, index) => {
+        // Add cosmic particles
+        for (let i = 0; i < 10; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'cosmic-particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: 2px;
+                height: 2px;
+                background: rgba(147, 51, 234, 0.8);
+                border-radius: 50%;
+                top: ${Math.random() * 100}%;
+                left: ${Math.random() * 100}%;
+                animation: particleFloat ${3 + Math.random() * 4}s infinite ease-in-out;
+                animation-delay: ${Math.random() * 2}s;
+            `;
+            hole.appendChild(particle);
+        }
+    });
+}
+
+// Add particle animation CSS
+const cosmicStyle = document.createElement('style');
+cosmicStyle.textContent = `
+    @keyframes particleFloat {
+        0%, 100% { 
+            transform: translateY(0) scale(0.5);
+            opacity: 0; 
+        }
+        50% { 
+            transform: translateY(-20px) scale(1);
+            opacity: 1; 
+        }
+    }
+    
+    .cosmic-particle {
+        pointer-events: none;
+    }
+`;
+document.head.appendChild(cosmicStyle);
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', enhanceCosmicPortals);
